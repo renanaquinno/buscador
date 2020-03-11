@@ -52,7 +52,7 @@ def pesquisa(url, keyword, depth):
                 i += 1                                                              #Contador += 1
                 maior = max(lista_rank)                                             #Recebe o maior valor da lista de rank
                 indice = lista_rank.index(max(lista_rank))                          #Identifica o indice do maior valor
-                print("{}   |    {}     | {}".format(i,maior,lista_links[indice]))  #Print contador, maior valor, e link correspondente ao maior valor
+                print("{}        {}       {}".format(i,maior,lista_links[indice]))  #Print contador, maior valor, e link correspondente ao maior valor
                 lista_rank.pop(indice)                                              #Remove o maior valor
                 lista_links.pop(indice)                                             #Remove o link correpondente ao maior valor
     except:
@@ -62,7 +62,7 @@ def pesquisa(url, keyword, depth):
                 i += 1                                                              #Contador += 1
                 maior = max(lista_rank)                                             #Recebe o maior valor da lista de rank
                 indice = lista_rank.index(max(lista_rank))                          #Identifica o indice do maior valor
-                print("{}   |    {}     | {}".format(i,maior,lista_links[indice]))  #Print contador, maior valor, e link correspondente ao maior valor
+                print("{}        {}       {}".format(i,maior,lista_links[indice]))  #Print contador, maior valor, e link correspondente ao maior valor
                 lista_rank.pop(indice)                                              #Remove o maior valor
                 lista_links.pop(indice)                                             #Remove o link correpondente ao maior valor
 pesquisa (url, keyword, depth)
