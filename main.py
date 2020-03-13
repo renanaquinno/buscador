@@ -1,5 +1,4 @@
 import requests
-import requests_cache
 import re
 from bs4 import BeautifulSoup
 
@@ -20,17 +19,14 @@ def pesquisa(url, keyword, depth):
     conteudo = html.get_text()                                                      #Transforma todo o texto em uma unica String
 
     if re.findall(keyword, conteudo, re.IGNORECASE):                                #Verifica se tem a palavra chave no conteúdo
-        #x  = re.findall(keyword, conteudo, re.IGNORECASE)                          #Armazena de todas as ocorrencias
         position = conteudo.upper().index(keyword.upper())                          #Armazena posição index da palavra-chave
         rank = conteudo.upper().count(keyword.upper())                              #Conta quantas vezes a palavra-chave aparece na pagina
         lista_rank.append(rank)
         lista_links.append(url)
 
-        #print("A pagina tem a Palavra-Chave:",keyword)
         frase = (conteudo[(position-20):(position+20)]).split('\n')                 #Forma as frase com 20 caracteres anteriores e posterioes e da um split quando tem quebra de linha
         frase = " ".join(frase)                                                     #Junta a frase separda anteriomente
         print("FRASE:",frase)                                                       #Print a frase
-        #print(rank, "Ocorrencias encontradas nessa página")                        #Informa a quantidade de keyword que tem na pagina
     else:
         print("A pagina não tem a Palavra-Chave:",keyword)
     try:
@@ -41,9 +37,8 @@ def pesquisa(url, keyword, depth):
                 links = (link.get('href'))                                          #Pega todos o links 2/2
                 if links is not None and links[:4] == 'http':                       #Pega somente os links que começam com http    
                     c += 1                                                          #Contador de link verdadeiro
-                    #print('\n')                                         
-                    #print(c,"º Link")                                              #Print o numero do link
                     print('\n')
+                    print(c,"º Link")                                               #Print o numero do link                    
                     print("LINK:",links)                                            #Print o link
                     pesquisa(links, keyword, depth)                                 #Chama novamente função pesquisa
             print("-------------------------------- RANK -------------------------------- ")
